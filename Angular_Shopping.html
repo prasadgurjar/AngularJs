@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Initialize the AngularJS Framework data-ng-app directive
+    -->
+<html data-ng-app="">
+
+    <head>
+        <meta charset="utf-8" />
+        <!--No scaling needed, thank you very much. Just make the viewport as many pixels wide as the device screen width.”-->
+        <meta name="viewport" content="width=device-width" />
+
+        <title>Angular&reg; ShoppingCart</title>
+    
+        <!--favivcon-->
+        <link rel="icon" type="image/png" href="images/Angular.png">
+
+        <!--Google AngularJS-->
+        <script src="angular/angular.min.js" > </script>
+    
+        <!--Controller-->
+        <script src="controller/controller.js"> </script>
+
+        <!--Bootstrap CSS-->
+        <link  rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    
+        <!--Font Awesome CSS-->
+        <link  rel="stylesheet" href="font-awesome/css/font-awesome.min.css" />
+    
+    
+        <!--Embedded CSS-->
+        <style type="text/css">
+           h1 { font-family: fantasy; }
+           body { background: hsla(0, 0%, 21.2%, 0.20); }
+        </style>
+
+    </head>
+
+    
+    <body ng-controller='CartController' >
+        <h1 class="page-header"><i class="icon-shopping-cart"></i>Shopping Cart with AngularJS</h1>
+        <div ng-repeat='item in items'>
+            <!--Product Title-->
+            <span class="help-block"><i class="icon-shopping-cart"></i>{{item.title}}</span>
+            
+            <input class="input-block-level" ng-model='item.quantity'>
+            
+            <!--Product Price-->
+            <span class="help-block">{{item.price | currency }}</span>
+            
+            <!--Total Price-->
+            <span class="help-block">{{item.price * item.quantity | currency}}</span>
+            
+            <!--Remove Item-->
+            <button class="btn-block" ng-click="remove($index)"><i class="icon-remove"></i>Remove</button>
+        </div>
+            </br></br>
+        <div>
+            <form class="form-horizontal">
+                <input type="text" class="input-block-level" data-ng-model="formItems"/>
+                <button class="btn btn-block" data-ng-click="addTodo()"><i class="icon-plus"></i>Add to list</button>
+                <button class="btn btn-block" data-ng-click="removeTodo()"><i class="icon-trash"></i>Remove Completed</button>
+            </form>
+        </div>
+    </body>
+
+</html>
